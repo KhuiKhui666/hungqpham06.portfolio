@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pham Quoc Hung | The Marketer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Đổi nền thành Gradient Be - Xám trung tính */
+            --bg-gradient: linear-gradient(135deg, #fdfbf7 0%, #e6dfd3 50%, #dcd3c6 100%);
+            --bg-darker: rgba(232, 228, 217, 0.5); 
+            --text-dark: #3a332a;
+            --text-light: #6b5c4f;
+            --accent: #a38f7a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            /* Thay font nội dung */
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed; /* Giữ nền đứng yên khi cuộn */
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h2, h3 { font-weight: 600; }
+
+        /* Chữ ký Handwriting */
+        h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 6vw;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #2a241d;
+        }
+
+        h2 { font-size: 2.5rem; margin-bottom: 30px; position: relative; font-family: 'Didot', serif; }
+        h2::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 2px; background-color: var(--accent); }
+
+        .subtitle { font-size: 1.2rem; color: var(--text-light); font-style: italic; }
+
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .section { padding: 100px 0; display: flex; align-items: center; justify-content: space-between; gap: 50px; }
+        .section.reverse { flex-direction: row-reverse; }
+        .text-block { flex: 1; font-weight: 300; }
+        .image-block { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; }
+
+        /* Bóng ảnh nghệ thuật */
+        .image-block img { max-width: 100%; height: auto; filter: drop-shadow(10px 15px 15px rgba(58, 51, 42, 0.2)); transition: transform 0.5s ease; }
+        .image-block img:hover { transform: scale(1.03) translateY(-10px); }
+        .image-block::before { content: ''; position: absolute; width: 300px; height: 400px; background-color: var(--bg-darker); border-radius: 200px 200px 0 0; z-index: -1; bottom: 0; }
+
+        .cv-item { margin-bottom: 30px; border-left: 1px solid var(--accent); padding-left: 20px; position: relative; }
+        .cv-item::before { content: ''; position: absolute; left: -4px; top: 10px; width: 7px; height: 7px; background-color: var(--accent); border-radius: 50%; }
+        .cv-title { font-weight: 600; font-size: 1.1rem; }
+        .cv-date { color: var(--accent); font-size: 0.9rem; margin-bottom: 10px; display: block; font-weight: 400; }
+        ul { list-style-type: none; }
+        ul li { margin-bottom: 10px; position: relative; padding-left: 15px; }
+        ul li::before { content: '-'; position: absolute; left: 0; color: var(--accent); }
+
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
+
+        /* Hiệu ứng trồi lên */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+
+        /* HIỆU ỨNG BLING BLING */
+        @keyframes twinkle {
+            0% { opacity: 0.1; transform: scale(0.5); }
+            100% { opacity: 0.8; transform: scale(1.2); }
+        }
+        .sparkle { position: absolute; font-size: 20px; color: #fff; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); animation: twinkle 2s infinite alternate; z-index: 0; pointer-events: none; }
+        .sp-1 { top: 20%; left: 15%; animation-delay: 0.5s; }
+        .sp-2 { top: 70%; left: 10%; font-size: 12px; animation-delay: 1s; }
+        .sp-3 { top: 30%; right: 20%; font-size: 25px; animation-delay: 0.2s; }
+        .sp-4 { top: 80%; right: 15%; animation-delay: 1.5s; }
+        .sp-5 { top: 50%; left: 50%; font-size: 15px; animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+
+    <div class="sparkle sp-1">✨</div>
+    <div class="sparkle sp-2">✨</div>
+    <div class="sparkle sp-3">✨</div>
+    <div class="sparkle sp-4">✨</div>
+    <div class="sparkle sp-5">✨</div>
+
+    <header class="hero">
+        <div class="container reveal">
+            <h1>Phạm Quốc Hưng</h1>
+            <p class="subtitle reveal delay-1">Results-driven Marketer & Researcher</p>
+            <p class="reveal delay-2" style="margin-top: 20px;">
+                Hanoi, Vietnam | (+84) 336662855 | hunggpham06@gmail.com
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <div class="text-block reveal">
+                <h2>The Vision</h2>
+                <p>A results-driven marketer specializing in disruptive marketing strategy, backed by proven critical thinking and data analytics skills in marketing and consumer behavior research. Driven to direct distinctive brand growth and progress into MNCs' Management Trainee programs.</p>
+                <h2 style="margin-top: 50px;">Education</h2>
+                <div class="cv-item">
+                    <span class="cv-title">Foreign Trade University</span>
+                    <span class="cv-date">2024 - 2028</span>
+                    <p>International Business (High Quality Program)<br>GPA: 3.84/4.0 | IELTS: 7.5</p>
+                </div>
+            </div>
+            <div class="image-block reveal delay-1">
+                <img src="ảnh_1.png" alt="Hung Pham">
+            </div>
+        </section>
+
+        <section class="section reverse">
+            <div class="text-block reveal">
+                <h2>Work Experience</h2>
+                <div class="cv-item">
+                    <span class="cv-title">Marketing Specialist | InnoGate</span>
+                    <span class="cv-date">Oct 2024 - Feb 2026</span>
+                    <ul>
+                        <li>Co-orchestrated Project S4S, managing 39 career-orientation workshops nationwide.</li>
+                        <li>Conceptualized assets for 4 webinars, generating 3,000 registrations and 280,000 impressions.</li>
+                        <li>Co-authored a strategic funding proposal for YSEALI Seeds for the Future 2024.</li>
+                    </ul>
+                </div>
+                <div class="cv-item">
+                    <span class="cv-title">Marketing Intern | Smart Media JSC.</span>
+                    <span class="cv-date">May 2025 - Jul 2025</span>
+                    <ul>
+                        <li>Drafted a 1-year integrated marketing & branding roadmap for Smart Media Academy.</li>
+                        <li>Co-executed events and webinars for the "AI On Air 2025" series for Viettel AI.</li>
+                    </ul>
+                </div>
+                <div class="cv-item">
+                    <span class="cv-title">Project Leader | Viet Beverage</span>
+                    <span class="cv-date">Mar 2025 - May 2025</span>
+                    <ul>
+                        <li>Spearheaded marketing campaigns, yielding 83.3% ROI and growing 650 organic followers.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="image-block reveal delay-1">
+                <img src="ảnh_2.png" alt="Hung Pham">
+            </div>
+        </section>
+
+        <section class="section" style="display: block;">
+            <div class="reveal">
+                <h2 style="text-align: center;">Research & Achievements</h2>
+            </div>
+            <div style="display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
+                <div class="text-block reveal delay-1" style="flex: 1; min-width: 300px;">
+                    <h3 style="margin-bottom: 20px; color: var(--accent);">Research Experience</h3>
+                    <ul>
+                        <li><strong>Co-author:</strong> Servant of Partner AI? The impact of AI Sycophancy... (Under review at JABES).</li>
+                        <li><strong>Co-author:</strong> Disclose or Disguise? The moderating role of AI Transparency on Ad Credibility... (HCMC Open University Journal of Science).</li>
+                        <li><strong>Co-author:</strong> The non-linear relationship between Perceived Personalization and Purchase Intention...</li>
+                        <li><strong>Co-translator:</strong> Women and Trade: The role of Trade in promoting Gender Equality.</li>
+                    </ul>
+                </div>
+                <div class="text-block reveal delay-2" style="flex: 1; min-width: 300px;">
+                    <h3 style="margin-bottom: 20px; color: var(--accent);">Awards & Skills</h3>
+                    <ul>
+                        <li><strong>Top 10 Finalists</strong> - The Disruptor 2026 (MaC FTU)</li>
+                        <li><strong>Third Prize</strong> - FTU Student Research Competition 2025</li>
+                        <li><strong>Top 6</strong> - TEDxcellence 2024</li>
+                        <li>Google Digital Marketing and E-commerce Certificate</li>
+                    </ul>
+                    <div style="margin-top: 20px;">
+                        <p><strong>Tools:</strong> SmartPLS 4, SPSS, AMOS, Stata, Adobe Photoshop, Canva, CapCut.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add("active"); }
+            }
+        }
+        window.addEventListener("load", reveal);
+        window.addEventListener("scroll", reveal);
+    </script>
+</body>
+</html>
