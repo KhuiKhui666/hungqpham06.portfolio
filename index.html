@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pham Quoc Hung | The Marketer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Đổi nền thành Gradient Be - Xám trung tính */
             --bg-gradient: linear-gradient(135deg, #fdfbf7 0%, #e6dfd3 50%, #dcd3c6 100%);
-            --bg-darker: rgba(232, 228, 217, 0.5); 
+            --bg-darker: rgba(232, 228, 217, 0.6); 
             --text-dark: #3a332a;
             --text-light: #6b5c4f;
             --accent: #a38f7a;
@@ -18,10 +17,9 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            /* Thay font nội dung */
             font-family: 'Montserrat', sans-serif;
             background: var(--bg-gradient);
-            background-attachment: fixed; /* Giữ nền đứng yên khi cuộn */
+            background-attachment: fixed;
             color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
@@ -30,30 +28,36 @@
 
         h2, h3 { font-weight: 600; }
 
-        /* Chữ ký Handwriting */
+        /* Font viết tay mới: Nhẹ tênh, phiêu bạt và không lỗi font */
         h1 {
-            font-family: 'Caveat', cursive;
-            font-size: 6vw;
-            letter-spacing: 2px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 7vw;
+            letter-spacing: 1px;
             margin-bottom: 10px;
             color: #2a241d;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
 
         h2 { font-size: 2.5rem; margin-bottom: 30px; position: relative; font-family: 'Didot', serif; }
         h2::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 2px; background-color: var(--accent); }
 
-        .subtitle { font-size: 1.2rem; color: var(--text-light); font-style: italic; }
+        .subtitle { font-size: 1.3rem; color: var(--text-light); font-style: italic; font-weight: 300; }
 
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
         .section { padding: 100px 0; display: flex; align-items: center; justify-content: space-between; gap: 50px; }
         .section.reverse { flex-direction: row-reverse; }
         .text-block { flex: 1; font-weight: 300; }
         .image-block { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; }
 
-        /* Bóng ảnh nghệ thuật */
-        .image-block img { max-width: 100%; height: auto; filter: drop-shadow(10px 15px 15px rgba(58, 51, 42, 0.2)); transition: transform 0.5s ease; }
-        .image-block img:hover { transform: scale(1.03) translateY(-10px); }
-        .image-block::before { content: ''; position: absolute; width: 300px; height: 400px; background-color: var(--bg-darker); border-radius: 200px 200px 0 0; z-index: -1; bottom: 0; }
+        /* Đổ bóng cho ảnh đã xóa nền */
+        .image-block img { 
+            max-width: 100%; 
+            height: auto; 
+            filter: drop-shadow(15px 20px 20px rgba(58, 51, 42, 0.25)); 
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+        .image-block img:hover { transform: scale(1.05) translateY(-10px); }
+        .image-block::before { content: ''; position: absolute; width: 320px; height: 420px; background-color: var(--bg-darker); border-radius: 200px 200px 0 0; z-index: -1; bottom: 0; }
 
         .cv-item { margin-bottom: 30px; border-left: 1px solid var(--accent); padding-left: 20px; position: relative; }
         .cv-item::before { content: ''; position: absolute; left: -4px; top: 10px; width: 7px; height: 7px; background-color: var(--accent); border-radius: 50%; }
@@ -65,23 +69,29 @@
 
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
 
-        /* Hiệu ứng trồi lên */
+        /* Hiệu ứng trồi lên khi cuộn chuột */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.2s; }
         .delay-2 { transition-delay: 0.4s; }
 
-        /* HIỆU ỨNG BLING BLING */
+        /* SIÊU HIỆU ỨNG BLING BLING SPARKLING */
         @keyframes twinkle {
-            0% { opacity: 0.1; transform: scale(0.5); }
-            100% { opacity: 0.8; transform: scale(1.2); }
+            0% { opacity: 0.2; transform: scale(0.7) rotate(0deg); filter: drop-shadow(0 0 2px rgba(255,255,255,0.3)); }
+            50% { opacity: 0.9; transform: scale(1.3) rotate(15deg); filter: drop-shadow(0 0 8px rgba(255,255,255,0.8)); }
+            100% { opacity: 0.4; transform: scale(0.9) rotate(-10deg); }
         }
-        .sparkle { position: absolute; font-size: 20px; color: #fff; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); animation: twinkle 2s infinite alternate; z-index: 0; pointer-events: none; }
-        .sp-1 { top: 20%; left: 15%; animation-delay: 0.5s; }
-        .sp-2 { top: 70%; left: 10%; font-size: 12px; animation-delay: 1s; }
-        .sp-3 { top: 30%; right: 20%; font-size: 25px; animation-delay: 0.2s; }
-        .sp-4 { top: 80%; right: 15%; animation-delay: 1.5s; }
-        .sp-5 { top: 50%; left: 50%; font-size: 15px; animation-delay: 0.8s; }
+        .sparkle { position: absolute; color: #fff; font-size: 24px; animation: twinkle 3s infinite ease-in-out; pointer-events: none; z-index: 0; }
+        
+        /* Rải sao khắp các tọa độ trên màn hình cho hết trống */
+        .sp-1 { top: 15%; left: 10%; animation-delay: 0s; }
+        .sp-2 { top: 25%; right: 15%; font-size: 18px; animation-delay: 0.5s; }
+        .sp-3 { top: 45%; left: 5%; font-size: 30px; animation-delay: 1s; }
+        .sp-4 { top: 60%; right: 8%; animation-delay: 1.5s; }
+        .sp-5 { top: 80%; left: 12%; font-size: 16px; animation-delay: 2s; }
+        .sp-6 { top: 35%; left: 45%; font-size: 20px; animation-delay: 0.7s; }
+        .sp-7 { top: 75%; right: 45%; font-size: 28px; animation-delay: 1.2s; }
+        .sp-8 { top: 90%; right: 20%; font-size: 22px; animation-delay: 1.8s; }
     </style>
 </head>
 <body>
@@ -91,12 +101,15 @@
     <div class="sparkle sp-3">✨</div>
     <div class="sparkle sp-4">✨</div>
     <div class="sparkle sp-5">✨</div>
+    <div class="sparkle sp-6">✨</div>
+    <div class="sparkle sp-7">✨</div>
+    <div class="sparkle sp-8">✨</div>
 
     <header class="hero">
         <div class="container reveal">
             <h1>Phạm Quốc Hưng</h1>
             <p class="subtitle reveal delay-1">Results-driven Marketer & Researcher</p>
-            <p class="reveal delay-2" style="margin-top: 20px;">
+            <p class="reveal delay-2" style="margin-top: 20px; font-weight: 300; letter-spacing: 1px;">
                 Hanoi, Vietnam | (+84) 336662855 | hunggpham06@gmail.com
             </p>
         </div>
@@ -115,7 +128,7 @@
                 </div>
             </div>
             <div class="image-block reveal delay-1">
-                <img src="ảnh_1.png" alt="Hung Pham">
+                <img src="Hung Pham - Blazer.png" alt="Phạm Quốc Hưng - Blazer">
             </div>
         </section>
 
@@ -148,7 +161,7 @@
                 </div>
             </div>
             <div class="image-block reveal delay-1">
-                <img src="ảnh_2.png" alt="Hung Pham">
+                <img src="Hung Pham - Pink Hair.png" alt="Phạm Quốc Hưng - Pink Hair">
             </div>
         </section>
 
