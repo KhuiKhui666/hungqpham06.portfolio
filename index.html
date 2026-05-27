@@ -8,7 +8,6 @@
     <style>
         :root {
             --bg-gradient: linear-gradient(135deg, #fdfbf7 0%, #e6dfd3 50%, #dcd3c6 100%);
-            --bg-darker: rgba(232, 228, 217, 0.6); 
             --text-dark: #3a332a;
             --text-light: #6b5c4f;
             --accent: #a38f7a;
@@ -28,49 +27,68 @@
 
         h2, h3 { font-weight: 600; }
 
-        /* Font viết tay mới: Nhẹ tênh, Pham Quoc Hung (không dấu) */
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 7vw;
+            font-size: 8vw;
             letter-spacing: 1px;
             margin-bottom: 10px;
             color: #2a241d;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
 
-        h2 { font-size: 2.5rem; margin-bottom: 30px; position: relative; font-family: 'Didot', serif; }
-        h2::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 2px; background-color: var(--accent); }
+        h2 { 
+            font-size: 2.5rem; 
+            margin-bottom: 40px; 
+            position: relative; 
+            font-family: 'Didot', serif; 
+            text-align: center;
+        }
+        
+        h2::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -10px; 
+            left: 50%; 
+            transform: translateX(-50%);
+            width: 60px; 
+            height: 2px; 
+            background-color: var(--accent); 
+        }
 
         .subtitle { font-size: 1.3rem; color: var(--text-light); font-style: italic; font-weight: 300; }
 
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-        .section { padding: 100px 0; display: flex; align-items: center; justify-content: space-between; gap: 50px; }
-        .section.reverse { flex-direction: row-reverse; }
-        .text-block { flex: 1; font-weight: 300; }
-        .image-block { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; }
-
-        /* Đổ bóng cho ảnh đã xóa nền */
-        .image-block img { 
-            max-width: 100%; 
-            height: auto; 
-            filter: drop-shadow(15px 20px 20px rgba(58, 51, 42, 0.25)); 
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        .container { 
+            width: 90%; 
+            max-width: 900px; /* Thu hẹp lại một chút để đọc text cho đẹp */
+            margin: 0 auto; 
+            position: relative; 
+            z-index: 1; 
         }
-        .image-block img:hover { transform: scale(1.05) translateY(-10px); }
-        .image-block::before { content: ''; position: absolute; width: 320px; height: 420px; background-color: var(--bg-darker); border-radius: 200px 200px 0 0; z-index: -1; bottom: 0; }
+        
+        .section { padding: 80px 0; }
+        
+        .text-block { 
+            width: 100%; 
+            font-weight: 300; 
+            background: rgba(255, 255, 255, 0.3); /* Phủ lớp nền mờ mờ sau chữ cho dễ đọc */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            backdrop-filter: blur(5px);
+        }
 
-        .cv-item { margin-bottom: 30px; border-left: 1px solid var(--accent); padding-left: 20px; position: relative; }
-        .cv-item::before { content: ''; position: absolute; left: -4px; top: 10px; width: 7px; height: 7px; background-color: var(--accent); border-radius: 50%; }
-        .cv-title { font-weight: 600; font-size: 1.1rem; }
-        .cv-date { color: var(--accent); font-size: 0.9rem; margin-bottom: 10px; display: block; font-weight: 400; }
+        .cv-item { margin-bottom: 30px; border-left: 2px solid var(--accent); padding-left: 20px; position: relative; }
+        .cv-item::before { content: ''; position: absolute; left: -6px; top: 10px; width: 10px; height: 10px; background-color: var(--accent); border-radius: 50%; }
+        .cv-title { font-weight: 600; font-size: 1.2rem; }
+        .cv-date { color: var(--accent); font-size: 0.95rem; margin-bottom: 10px; display: block; font-weight: 400; font-style: italic; }
         ul { list-style-type: none; }
-        ul li { margin-bottom: 10px; position: relative; padding-left: 15px; }
-        ul li::before { content: '-'; position: absolute; left: 0; color: var(--accent); }
+        ul li { margin-bottom: 10px; position: relative; padding-left: 18px; }
+        ul li::before { content: '-'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
 
-        /* Hiệu ứng trồi lên khi cuộn chuột */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
+        /* Hiệu ứng trồi lên */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.2s; }
         .delay-2 { transition-delay: 0.4s; }
@@ -115,24 +133,22 @@
     </header>
 
     <div class="container">
-        <section class="section">
-            <div class="text-block reveal">
+        <section class="section reveal">
+            <div class="text-block">
                 <h2>The Vision</h2>
-                <p>A results-driven marketer specializing in disruptive marketing strategy, backed by proven critical thinking and data analytics skills in marketing and consumer behavior research. Driven to direct distinctive brand growth and progress into MNCs' Management Trainee programs.</p>
-                <h2 style="margin-top: 50px;">Education</h2>
+                <p style="text-align: center; margin-bottom: 50px;">A results-driven marketer specializing in disruptive marketing strategy, backed by proven critical thinking and data analytics skills in marketing and consumer behavior research. Driven to direct distinctive brand growth and progress into MNCs' Management Trainee programs.</p>
+                
+                <h2>Education</h2>
                 <div class="cv-item">
                     <span class="cv-title">Foreign Trade University</span>
                     <span class="cv-date">2024 - 2028</span>
                     <p>International Business (High Quality Program)<br>GPA: 3.84/4.0 | IELTS: 7.5</p>
                 </div>
             </div>
-            <div class="image-block reveal delay-1">
-                <img src="img1.png" alt="Phạm Quốc Hưng">
-            </div>
         </section>
 
-        <section class="section reverse">
-            <div class="text-block reveal">
+        <section class="section reveal">
+            <div class="text-block">
                 <h2>Work Experience</h2>
                 <div class="cv-item">
                     <span class="cv-title">Marketing Specialist | InnoGate</span>
@@ -159,37 +175,28 @@
                     </ul>
                 </div>
             </div>
-            <div class="image-block reveal delay-1">
-                <img src="img2.png" alt="Phạm Quốc Hưng">
-            </div>
         </section>
 
-        <section class="section" style="display: block;">
-            <div class="reveal">
-                <h2 style="text-align: center;">Research & Achievements</h2>
-            </div>
-            <div style="display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap;">
-                <div class="text-block reveal delay-1" style="flex: 1; min-width: 300px;">
-                    <h3 style="margin-bottom: 20px; color: var(--accent);">Research Experience</h3>
-                    <ul>
-                        <li><strong>Co-author:</strong> Servant of Partner AI? The impact of AI Sycophancy... (Under review at JABES).</li>
-                        <li><strong>Co-author:</strong> Disclose or Disguise? The moderating role of AI Transparency on Ad Credibility... (HCMC Open University Journal of Science).</li>
-                        <li><strong>Co-author:</strong> The non-linear relationship between Perceived Personalization and Purchase Intention...</li>
-                        <li><strong>Co-translator:</strong> Women and Trade: The role of Trade in promoting Gender Equality.</li>
-                    </ul>
-                </div>
-                <div class="text-block reveal delay-2" style="flex: 1; min-width: 300px;">
-                    <h3 style="margin-bottom: 20px; color: var(--accent);">Awards & Skills</h3>
-                    <ul>
-                        <li><strong>Top 10 Finalists</strong> - The Disruptor 2026 (MaC FTU)</li>
-                        <li><strong>Third Prize</strong> - FTU Student Research Competition 2025</li>
-                        <li><strong>Top 6</strong> - TEDxcellence 2024</li>
-                        <li>Google Digital Marketing and E-commerce Certificate</li>
-                    </ul>
-                    <div style="margin-top: 20px;">
-                        <p><strong>Tools:</strong> SmartPLS 4, SPSS, AMOS, Stata, Adobe Photoshop, Canva, CapCut.</p>
-                    </div>
-                </div>
+        <section class="section reveal" style="margin-bottom: 50px;">
+            <div class="text-block">
+                <h2>Research & Achievements</h2>
+                
+                <h3 style="margin: 30px 0 15px; color: var(--accent);">Research Experience</h3>
+                <ul>
+                    <li><strong>Co-author:</strong> Servant of Partner AI? The impact of AI Sycophancy... (Under review at JABES).</li>
+                    <li><strong>Co-author:</strong> Disclose or Disguise? The moderating role of AI Transparency on Ad Credibility... (HCMC Open University Journal of Science).</li>
+                    <li><strong>Co-author:</strong> The non-linear relationship between Perceived Personalization and Purchase Intention...</li>
+                    <li><strong>Co-translator:</strong> Women and Trade: The role of Trade in promoting Gender Equality.</li>
+                </ul>
+
+                <h3 style="margin: 40px 0 15px; color: var(--accent);">Awards & Skills</h3>
+                <ul>
+                    <li><strong>Top 10 Finalists</strong> - The Disruptor 2026 (MaC FTU)</li>
+                    <li><strong>Third Prize</strong> - FTU Student Research Competition 2025</li>
+                    <li><strong>Top 6</strong> - TEDxcellence 2024</li>
+                    <li>Google Digital Marketing and E-commerce Certificate</li>
+                </ul>
+                <p style="margin-top: 20px;"><strong>Tools:</strong> SmartPLS 4, SPSS, AMOS, Stata, Adobe Photoshop, Canva, CapCut.</p>
             </div>
         </section>
     </div>
